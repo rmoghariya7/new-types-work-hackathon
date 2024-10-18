@@ -1,5 +1,5 @@
-import "./style.css";
 import * as THREE from "three";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import gsap from "gsap";
 
 const sizes = {
@@ -25,6 +25,13 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 6;
 cameraGroup.add(camera);
+
+// Initialize OrbitControls
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+controls.dampingFactor = 0.25; // how much damping to apply
+controls.screenSpacePanning = false; // prevent panning in screen space
+controls.maxPolarAngle = Math.PI / 2; // limit vertical rotation
 
 // Objects
 const textureLoader = new THREE.TextureLoader();
@@ -144,6 +151,54 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const clock = new THREE.Clock();
 let previousTime = 0;
 
+// Mouse interaction for rotating all models independently
+let isMouseDown = false;
+let previousMousePosition = { x: 0, y: 0 };
+let activeMesh = null; // Track the currently active mesh
+
+window.addEventListener('mousedown', (event) => {
+  isMouseDown = true;
+  previousMousePosition = { x: event.clientX, y: event.clientY };
+
+  // Check which mesh is clicked
+  const mouse = new THREE.Vector2();
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+
+  const intersects = raycaster.intersectObjects(objectMeshes);
+  if (intersects.length > 0) {
+    activeMesh = intersects[0].object; // Set the active mesh to the one clicked
+  }
+});
+
+window.addEventListener('mousemove', (event) => {
+  if (isMouseDown && activeMesh) {
+    const deltaMove = {
+      x: event.clientX - previousMousePosition.x,
+      y: event.clientY - previousMousePosition.y,
+    };
+
+    // Rotate the active mesh based on mouse movement
+    activeMesh.rotation.y += deltaMove.x * 0.01; // Adjust sensitivity as needed
+    activeMesh.rotation.x += deltaMove.y * 0.01; // Adjust sensitivity as needed
+
+    previousMousePosition = { x: event.clientX, y: event.clientY };
+  }
+});
+
+window.addEventListener('mouseup', () => {
+  isMouseDown = false;
+  activeMesh = null; // Reset active mesh on mouse up
+});
+
+// Optional: Prevent default behavior for the right mouse button
+window.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
+
 // animate
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
@@ -173,3 +228,39 @@ const tick = () => {
 };
 
 tick();
+
+// what you learn
+const list = document.querySelector('.wyl-list');
+const description = document.getElementById('description');
+
+// Event delegation for mouseenter and mouseleave
+list.addEventListener('mouseenter', function (event) {
+  if (event.target.tagName === 'LI') {
+    description.innerText = event.target.getAttribute('data-description');
+    description.style.display = 'block'; // Show the description
+    description.classList.remove('active'); // Remove active class for fade effect
+    setTimeout(() => {
+      description.classList.add('active'); // Add active class for fade effect
+    }, 10); // Small timeout to trigger the transition
+  }
+}, true); // Use capture phase to ensure it captures the event
+
+list.addEventListener('mouseleave', function (event) {
+  if (event.target.tagName === 'LI') {
+    // Delay hiding the description to prevent flickering
+    setTimeout(() => {
+      if (!description.classList.contains('active')) {
+        description.classList.remove('active'); // Remove active class to fade out
+        description.style.display = 'none'; // Hide after fade out
+      }
+    }, 300); // Match the duration of the fade out
+  }
+}, true); // Use capture phase
+
+// Click event for the list items
+list.addEventListener('click', function (event) {
+  if (event.target.tagName === 'LI') {
+    // Cool animation on click (e.g., shake effect)
+    gsap.to(description, { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
+  }
+});
