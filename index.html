@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pottery Workshop</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/chat.css" />
   </head>
   <body>
     <canvas class="webgl"></canvas>
@@ -147,7 +148,34 @@
       </div>
     </section>
 
+    <button id="openChatBtn" class="chat-button">
+      <i class="fas fa-comments"></i> Chat
+    </button>
+
+    <div id="chatModal" class="chat-modal">
+      <div class="chat-content">
+        <div class="chat-header">
+          <h2>Pottery Workshop - Chat Assistant</h2>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+          <div id="chatMessages" class="chat-messages"></div>
+        </div>
+        <div class="chat-footer">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+          />
+          <button id="sendBtn" class="send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/chatBot.js" type="module"></script>
     <script>
       function handleSubmit(event) {
         event.preventDefault();
