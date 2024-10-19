@@ -34,11 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle input changes for suggestions
     userInput.addEventListener('input', showSuggestions);
 
-    function sendMessage() {
+    async function sendMessage() {
         const question = userInput.value.trim();
         if (question) {
             addMessage('You', question, 'user-message');
             const answer = findAnswer(question);
+            await new Promise(resolve => setTimeout(resolve, 200));
+
             addMessage('Bot', answer, 'bot-message');
             userInput.value = '';
             suggestionContainer.style.display = 'none';
