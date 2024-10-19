@@ -225,8 +225,8 @@ tick();
 const list = document.querySelector('.wyl-list');
 const description = document.getElementById('description');
 
-// Event delegation for mouseenter and mouseleave
-list.addEventListener('mouseenter', function (event) {
+// // Event delegation for mouseenter and mouseleave
+list?.addEventListener('mouseenter', function (event) {
   if (event.target.tagName === 'LI') {
     description.innerText = event.target.getAttribute('data-description');
     description.style.display = 'block'; // Show the description
@@ -237,7 +237,7 @@ list.addEventListener('mouseenter', function (event) {
   }
 }, true); // Use capture phase to ensure it captures the event
 
-list.addEventListener('mouseleave', function (event) {
+list?.addEventListener('mouseleave', function (event) {
   if (event.target.tagName === 'LI') {
     // Delay hiding the description to prevent flickering
     setTimeout(() => {
@@ -250,9 +250,52 @@ list.addEventListener('mouseleave', function (event) {
 }, true); // Use capture phase
 
 // Click event for the list items
-list.addEventListener('click', function (event) {
+list?.addEventListener('click', function (event) {
   if (event.target.tagName === 'LI') {
     // Cool animation on click (e.g., shake effect)
     gsap.to(description, { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
   }
 });
+
+// Check if we're on the Learn More page
+if (window.location.pathname.includes('learnMore.html')) {
+  scene.remove(mesh1);
+  scene.remove(mesh2);
+  scene.remove(mesh3);
+
+  // Adjust camera and objects for the Learn More page
+  camera.position.z = 10;
+
+  // Remove scroll-based animations
+  window.removeEventListener('scroll', () => { });
+
+  // Create IcosahedronGeometry with wireframe
+  const icosahedronGeometry = new THREE.IcosahedronGeometry(1, 2);
+  const icosahedronMaterial = new THREE.MeshBasicMaterial({
+    color: 0xea1d6f,
+    wireframe: true
+  });
+  const icosahedron = new THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+  icosahedron.position.set(0, 0, -3);
+  scene.add(icosahedron);
+
+  // Continuous rotation for objects on Learn More page
+  function animateLearnMoreObjects() {
+    const elapsedTime = clock.getElapsedTime();
+
+    objectMeshes.forEach((mesh) => {
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.01;
+    });
+
+    // Rotate the icosahedron
+    icosahedron.rotation.x += 0.005;
+    icosahedron.rotation.y += 0.005;
+
+    icosahedron.position.x = (Math.sin(elapsedTime * 0.5)) * 4;
+    icosahedron.position.y = (Math.cos(elapsedTime * 0.5)) * 4;
+
+    requestAnimationFrame(animateLearnMoreObjects);
+  }
+  animateLearnMoreObjects();
+}
