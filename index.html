@@ -3,11 +3,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pottery Workshop</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <canvas class="webgl"></canvas>
 
+    <!-- Hero page -->
     <section class="section hero-page">
       <h1 class="neon-text hero-page-title">
         Join with us for the pottery workshop
@@ -22,6 +23,8 @@
         <button class="custom-btn neon-btn">Learn more</button>
       </div>
     </section>
+
+    <!-- What are you gonna learn in this workshop -->
     <section class="section what-you-learn">
       <h1 class="neon-text wyl-title">
         What are you gonna learn in this workshop
@@ -78,6 +81,8 @@
       </ul>
       <div id="description" class="description"></div>
     </section>
+
+    <!-- Contact me section -->
     <section class="section contact-me">
       <h2 class="neon-text">Contact me</h2>
       <div class="screen-body-item">
@@ -108,7 +113,41 @@
       </div>
     </section>
 
-    <script src="./main.js" type="module"></script>
+    <!-- FAQ section -->
+    <section class="section faq">
+      <h2 class="neon-text">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-question">Do I need any prior experience?</h3>
+          <p class="faq-answer">
+            No prior experience is required. Our workshop is beginner-friendly!
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What should I wear?</h3>
+          <p class="faq-answer">
+            Wear comfortable clothing that you don't mind getting a little
+            messy.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How can I register?</h3>
+          <p class="faq-answer">
+            You can register using the form on our website. Simply fill in your
+            details and we'll get back to you with the next steps.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Will I get to keep the pottery I make?</h3>
+          <p class="faq-answer">
+            Yes! You will take home your creations after they've been fired and
+            glazed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/main.js" type="module"></script>
     <script>
       function handleSubmit(event) {
         event.preventDefault();
