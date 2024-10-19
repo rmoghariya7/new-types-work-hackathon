@@ -2,7 +2,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moghariya Rahul</title>
+    <title>Pottery Workshop</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <canvas class="webgl"></canvas>
@@ -12,9 +13,12 @@
         Join with us for the pottery workshop
       </h1>
       <div class="cta">
-        <a href="./joinPottery.html">
-          <button class="custom-btn neon-btn">Join</button>
-        </a>
+        <button
+          class="custom-btn primary-btn"
+          onclick="window.location.href='./joinPottery.html'"
+        >
+          Join
+        </button>
         <button class="custom-btn neon-btn">Learn more</button>
       </div>
     </section>
@@ -23,44 +27,98 @@
         What are you gonna learn in this workshop
       </h1>
       <ul class="wyl-list">
-        <li class="neon-text">Clay Basics</li>
-        <li class="neon-text">Tools and Equipment</li>
-        <li class="neon-text">Hand-Building Techniques</li>
-        <li class="neon-text">Wheel Throwing Techniques</li>
-        <li class="neon-text">Surface Decoration</li>
-        <li class="neon-text">Drying and Firing</li>
-        <li class="neon-text">Safety Measures</li>
-        <li class="neon-text">Practice Patience</li>
+        <li
+          class="neon-text"
+          data-description="Learn the basics of working with clay."
+        >
+          Clay Basics
+        </li>
+        <li
+          class="neon-text"
+          data-description="Familiarize yourself with essential tools and equipment."
+        >
+          Tools and Equipment
+        </li>
+        <li
+          class="neon-text"
+          data-description="Master hand-building techniques for pottery."
+        >
+          Hand-Building Techniques
+        </li>
+        <li
+          class="neon-text"
+          data-description="Learn the art of wheel throwing."
+        >
+          Wheel Throwing Techniques
+        </li>
+        <li
+          class="neon-text"
+          data-description="Explore various surface decoration methods."
+        >
+          Surface Decoration
+        </li>
+        <li
+          class="neon-text"
+          data-description="Understand the drying and firing processes."
+        >
+          Drying and Firing
+        </li>
+        <li
+          class="neon-text"
+          data-description="Learn about safety measures in pottery."
+        >
+          Safety Measures
+        </li>
+        <li
+          class="neon-text"
+          data-description="Practice patience and enjoy the process."
+        >
+          Practice Patience
+        </li>
       </ul>
+      <div id="description" class="description"></div>
     </section>
     <section class="section contact-me">
       <h2 class="neon-text">Contact me</h2>
       <div class="screen-body-item">
-        <div class="app-form">
+        <form class="app-form" id="contactForm" onsubmit="handleSubmit(event)">
           <div class="app-form-group">
-            <input
-              class="app-form-control"
-              placeholder="NAME"
-              value="Moghariya Rahul"
-            />
+            <input class="app-form-control" placeholder="NAME" required />
           </div>
           <div class="app-form-group">
-            <input class="app-form-control" placeholder="EMAIL" />
+            <input class="app-form-control" placeholder="EMAIL" required />
           </div>
           <div class="app-form-group">
-            <input class="app-form-control" placeholder="CONTACT NO" />
+            <input class="app-form-control" placeholder="CONTACT NO" required />
           </div>
           <div class="app-form-group message">
-            <input class="app-form-control" placeholder="MESSAGE" />
+            <input class="app-form-control" placeholder="MESSAGE" required />
           </div>
           <div class="app-form-group buttons">
-            <button class="app-form-button">CANCEL</button>
-            <button class="app-form-button">SEND</button>
+            <button
+              type="button"
+              class="custom-btn app-form-button"
+              onclick="resetForm()"
+            >
+              CANCEL
+            </button>
+            <button type="submit" class="custom-btn neon-btn">SEND</button>
           </div>
-        </div>
+        </form>
       </div>
     </section>
 
     <script src="./main.js" type="module"></script>
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        alert('Thank you for your message');
+        // Add any additional form submission logic here
+      }
+
+      function resetForm() {
+        document.getElementById('contactForm').reset();
+      }
+    </script>
   </body>
 </html>
