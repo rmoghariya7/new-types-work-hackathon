@@ -422,7 +422,7 @@ li.neon-text {
 }
 
 .faq-item {
-    background-color: var(--background-color-secondary); 
+  background-color: var(--background-color-secondary);
   border-radius: var(--border-radius);
   padding: var(--spacing-large);
 }
@@ -542,9 +542,11 @@ li.neon-text {
   align-items: center;
   margin: 40px 5%;
   text-align: center;
-/* Ensure it matches the overall background */
+  /* Ensure it matches the overall background */
   padding: var(--spacing-large); /* Add some padding for better spacing */
-  border-radius: var(--border-radius); /* Optional: Add border radius for a softer look */
+  border-radius: var(
+    --border-radius
+  ); /* Optional: Add border radius for a softer look */
 }
 
 .about-us h2 {
@@ -563,7 +565,7 @@ li.neon-text {
   display: flex;
   flex-direction: column;
   align-items: center;
-    background-color: var(--background-color-secondary); 
+  background-color: var(--background-color-secondary);
   border-radius: var(--border-radius);
   padding: var(--spacing-large);
   margin: 10px 0;
@@ -580,4 +582,78 @@ li.neon-text {
 .instructor-bio p {
   font-size: 16px;
   color: var(--text-color);
+}
+
+/* Testimonials Styles */
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-large);
+}
+
+.testimonial-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.testimonial-item {
+  background-color: var(--background-color-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-large);
+  max-width: 300px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.testimonial-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.testimonial-author {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-links a {
+  color: var(--primary-color);
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Media Queries for Testimonials */
+@media screen and (max-width: 768px) {
+  .testimonial-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-item {
+    max-width: 100%;
+  }
 }
