@@ -1,3 +1,5 @@
+import chatData from '../data/chat_data.json';
+
 document.addEventListener('DOMContentLoaded', () => {
     const openChatBtn = document.getElementById('openChatBtn');
     const chatModal = document.getElementById('chatModal');
@@ -6,15 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userInput = document.getElementById('userInput');
     const chatMessages = document.getElementById('chatMessages');
     const suggestionContainer = document.getElementById('suggestionContainer');
-
-    let chatData;
-
-    // Load chat data
-    fetch('../data/chat_data.json')
-        .then(response => response.json())
-        .then(data => {
-            chatData = data;
-        });
 
     // Open chat modal
     openChatBtn.addEventListener('click', () => {
