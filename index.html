@@ -12,6 +12,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   </head>
   <body>
     <canvas class="webgl"></canvas>
@@ -130,27 +132,27 @@
     <section class="section faq">
       <h2 class="neon-text">Frequently Asked Questions</h2>
       <div class="faq-list">
-        <div class="faq-item">
+        <div class="faq-item" data-aos="fade-left">
           <h3 class="faq-question">Do I need any prior experience?</h3>
           <p class="faq-answer">
             No prior experience is required. Our workshop is beginner-friendly!
           </p>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-aos="fade-left">
           <h3 class="faq-question">What should I wear?</h3>
           <p class="faq-answer">
             Wear comfortable clothing that you don't mind getting a little
             messy.
           </p>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-aos="fade-left">
           <h3 class="faq-question">How can I register?</h3>
           <p class="faq-answer">
             You can register using the form on our website. Simply fill in your
             details and we'll get back to you with the next steps.
           </p>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" data-aos="fade-left">
           <h3 class="faq-question">Will I get to keep the pottery I make?</h3>
           <p class="faq-answer">
             Yes! You will take home your creations after they've been fired and
@@ -164,7 +166,7 @@
     <section class="section testimonials">
       <h2 class="neon-text">What Our Participants Say</h2>
       <div class="testimonial-list">
-        <div class="testimonial-item">
+        <div class="testimonial-item" data-aos="flip-down">
           <p class="testimonial-text">
             "I had never touched clay before, but this workshop made me fall in
             love with pottery. The instructors were so patient and supportive!"
@@ -186,7 +188,7 @@
           </div>
         </div>
         <div class="testimonial-item">
-          <p class="testimonial-text">
+          <p class="testimonial-text" data-aos="flip-down">
             "A great way to unwind and connect with fellow art lovers. Highly
             recommended!"
           </p>
@@ -207,7 +209,7 @@
           </div>
         </div>
         <div class="testimonial-item">
-          <p class="testimonial-text">
+          <p class="testimonial-text" data-aos="flip-down">
             "I made my first bowl here and I can't wait to make more!"
           </p>
           <p class="testimonial-author">- Ronit Patel.</p>
@@ -289,6 +291,10 @@
       function resetForm() {
         document.getElementById('contactForm').reset();
       }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
   </body>
 </html>
