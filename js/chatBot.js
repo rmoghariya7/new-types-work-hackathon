@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initialX = e.clientX - xOffset;
         initialY = e.clientY - yOffset;
 
-        if (e.target === chatHeader) {
+        if (e.target.closest('.chat-header')) {
             isDragging = true;
         }
     }

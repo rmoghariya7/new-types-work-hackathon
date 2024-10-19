@@ -42,6 +42,7 @@
   background-color: var(--chat-modal-bg);
   border-radius: var(--border-radius-large);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  user-select: none;
 }
 
 .chat-content {
@@ -51,6 +52,7 @@
 }
 
 .chat-header {
+  font-family: var(--font-primary);
   background-color: var(--primary-color);
   color: var(--text-color);
   padding: var(--spacing-medium);
@@ -93,6 +95,8 @@
   border-radius: 18px;
   font-size: 14px;
   line-height: 1.4;
+  font-family: var(--font-secondary);
+  font-weight: 400;
 }
 
 .user-message {

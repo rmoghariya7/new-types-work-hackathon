@@ -15,6 +15,10 @@
         {
             "question": "Goodbye",
             "answer": "Goodbye! Have a great day!"
+        },
+        {
+            "question": "What is the pottery workshop?",
+            "answer": "The pottery workshop is a place where you can learn to make pottery."
         }
     ]
 }
