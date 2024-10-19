@@ -168,6 +168,7 @@
   font-size: 14px;
   border-bottom: 1px solid #f0f0f0;
   letter-spacing: 1.5px;
+  line-height: 1.5;
 }
 
 .suggestion:last-child {
