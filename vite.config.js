@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         nested: resolve(__dirname, "joinPottery.html"),
+        learnMore: resolve(__dirname, "learnMore.html"),
       },
     },
   },
