@@ -182,11 +182,14 @@
           <div id="chatMessages" class="chat-messages"></div>
         </div>
         <div class="chat-footer">
-          <input
-            type="text"
-            id="userInput"
-            placeholder="Type your message..."
-          />
+          <div class="input-container">
+            <div id="suggestionContainer" class="suggestion-container"></div>
+            <input
+              type="text"
+              id="userInput"
+              placeholder="Type your message..."
+            />
+          </div>
           <button id="sendBtn" class="send-btn">
             <i class="fas fa-paper-plane"></i>
           </button>

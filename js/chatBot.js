@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('sendBtn');
     const userInput = document.getElementById('userInput');
     const chatMessages = document.getElementById('chatMessages');
+    const suggestionContainer = document.getElementById('suggestionContainer');
 
     let chatData;
 
     // Load chat data
-    fetch('data/chat_data.json')
+    fetch('../data/chat_data.json')
         .then(response => response.json())
         .then(data => {
             chatData = data;
@@ -37,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Handle input changes for suggestions
+    userInput.addEventListener('input', showSuggestions);
+
     function sendMessage() {
         const question = userInput.value.trim();
         if (question) {
@@ -44,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const answer = findAnswer(question);
             addMessage('Bot', answer, 'bot-message');
             userInput.value = '';
+            suggestionContainer.style.display = 'none';
         }
     }
 
@@ -63,6 +68,35 @@ document.addEventListener('DOMContentLoaded', () => {
             q.question.toLowerCase().includes(lowercaseQuestion)
         );
         return matchedQuestion ? matchedQuestion.answer : "I'm sorry, I don't have an answer for that question.";
+    }
+
+    // Show suggestions based on user input
+    function showSuggestions() {
+        const userText = userInput.value.toLowerCase();
+        if (userText.length > 0) {
+            const suggestions = chatData.questions
+                .filter(q => q.question.toLowerCase().includes(userText))
+                .slice(0, 3); // Limit to 3 suggestions
+
+            if (suggestions.length > 0) {
+                suggestionContainer.innerHTML = '';
+                suggestions.forEach(suggestion => {
+                    const suggestionElement = document.createElement('div');
+                    suggestionElement.classList.add('suggestion');
+                    suggestionElement.textContent = suggestion.question;
+                    suggestionElement.addEventListener('click', () => {
+                        userInput.value = suggestion.question;
+                        suggestionContainer.style.display = 'none';
+                    });
+                    suggestionContainer.appendChild(suggestionElement);
+                });
+                suggestionContainer.style.display = 'block';
+            } else {
+                suggestionContainer.style.display = 'none';
+            }
+        } else {
+            suggestionContainer.style.display = 'none';
+        }
     }
 
     // Make the modal draggable

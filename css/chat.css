@@ -117,9 +117,14 @@
   border-bottom-right-radius: var(--border-radius-large);
 }
 
-#userInput {
+.input-container {
+  position: relative;
   flex-grow: 1;
-  border: none;
+}
+
+#userInput {
+  width: 100%;
+  border: 1px solid #ccc;
   border-radius: 20px;
   padding: 8px 12px;
   font-size: 14px;
@@ -140,4 +145,34 @@
 
 .send-btn:hover {
   background-color: var(--chat-button-hover-color);
+}
+
+.suggestion-container {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+  max-height: 120px;
+  overflow-y: auto;
+  display: none;
+}
+
+.suggestion {
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion:last-child {
+  border-bottom: none;
+}
+
+.suggestion:hover {
+  background-color: #f8f8f8;
 }
