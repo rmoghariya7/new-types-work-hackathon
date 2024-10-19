@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import gsap from "gsap";
 
 const sizes = {
@@ -25,13 +24,6 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 6;
 cameraGroup.add(camera);
-
-// Initialize OrbitControls
-const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
-controls.dampingFactor = 0.25; // how much damping to apply
-controls.screenSpacePanning = false; // prevent panning in screen space
-controls.maxPolarAngle = Math.PI / 2; // limit vertical rotation
 
 // Objects
 const textureLoader = new THREE.TextureLoader();
@@ -67,7 +59,7 @@ mesh3.position.y = -objectsDistance * 2;
 scene.add(mesh1, mesh2, mesh3);
 
 // particles
-const count = 200;
+const count = 400;
 const position = new Float32Array(count * 3);
 const particleGeometry = new THREE.BufferGeometry();
 for (let i = 0; i < count; i++) {
