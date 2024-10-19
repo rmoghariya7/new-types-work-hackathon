@@ -3,11 +3,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pottery Workshop</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/chat.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <canvas class="webgl"></canvas>
 
+    <!-- Hero page -->
     <section class="section hero-page">
       <h1 class="neon-text hero-page-title">
         Join with us for the pottery workshop
@@ -22,6 +31,8 @@
         <button class="custom-btn neon-btn">Learn more</button>
       </div>
     </section>
+
+    <!-- What are you gonna learn in this workshop -->
     <section class="section what-you-learn">
       <h1 class="neon-text wyl-title">
         What are you gonna learn in this workshop
@@ -78,6 +89,8 @@
       </ul>
       <div id="description" class="description"></div>
     </section>
+
+    <!-- Contact me section -->
     <section class="section contact-me">
       <h2 class="neon-text">Contact me</h2>
       <div class="screen-body-item">
@@ -91,7 +104,7 @@
           <div class="app-form-group">
             <input class="app-form-control" placeholder="CONTACT NO" required />
           </div>
-          <div class="app-form-group message">
+          <div class="app-form-group">
             <input class="app-form-control" placeholder="MESSAGE" required />
           </div>
           <div class="app-form-group buttons">
@@ -108,7 +121,68 @@
       </div>
     </section>
 
-    <script src="./main.js" type="module"></script>
+    <!-- FAQ section -->
+    <section class="section faq">
+      <h2 class="neon-text">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-question">Do I need any prior experience?</h3>
+          <p class="faq-answer">
+            No prior experience is required. Our workshop is beginner-friendly!
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What should I wear?</h3>
+          <p class="faq-answer">
+            Wear comfortable clothing that you don't mind getting a little
+            messy.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How can I register?</h3>
+          <p class="faq-answer">
+            You can register using the form on our website. Simply fill in your
+            details and we'll get back to you with the next steps.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Will I get to keep the pottery I make?</h3>
+          <p class="faq-answer">
+            Yes! You will take home your creations after they've been fired and
+            glazed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <button id="openChatBtn" class="chat-button">
+      <i class="fas fa-comments" />
+    </button>
+
+    <div id="chatModal" class="chat-modal">
+      <div class="chat-content">
+        <div class="chat-header">
+          <h2>Pottery Workshop - Chat Assistant</h2>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+          <div id="chatMessages" class="chat-messages"></div>
+        </div>
+        <div class="chat-footer">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type your message..."
+          />
+          <button id="sendBtn" class="send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js" type="module"></script>
+    <script src="./js/chatBot.js" type="module"></script>
     <script>
       function handleSubmit(event) {
         event.preventDefault();

@@ -1,0 +1,40 @@
+{
+    "questions": [
+        {
+            "question": "Hello",
+            "answer": "Hi there! How can I help you today?"
+        },
+        {
+            "question": "What's your name?",
+            "answer": "I'm a simple chat assistant. Nice to meet you!"
+        },
+        {
+            "question": "How are you?",
+            "answer": "I'm functioning well, thank you for asking. How about you?"
+        },
+        {
+            "question": "Goodbye",
+            "answer": "Goodbye! Have a great day!"
+        },
+        {
+            "question": "What is the pottery workshop?",
+            "answer": "The pottery workshop is a place where you can learn to make pottery."
+        },
+        {
+            "question": "What types of pottery can I learn to make?",
+            "answer": "In a pottery workshop, you can typically learn to make various types of pottery, including bowls, vases, plates, mugs, and decorative sculptures."
+        },
+        {
+            "question": "What materials are used in pottery?",
+            "answer": "The main material used in pottery is clay. Different types of clay can be used, such as earthenware, stoneware, and porcelain, each with unique properties and firing requirements."
+        },
+        {
+            "question": "What techniques will I learn in a pottery workshop?",
+            "answer": "In a pottery workshop, you'll likely learn techniques such as hand-building (pinch pots, coil building, and slab construction), wheel throwing, glazing, and firing."
+        },
+        {
+            "question": "Do I need any experience to join a pottery workshop?",
+            "answer": "Most pottery workshops offer classes for beginners, so you typically don't need any prior experience. Advanced classes may be available for those with more experience."
+        }
+    ]
+}
