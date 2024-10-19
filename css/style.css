@@ -65,6 +65,10 @@ body {
   align-self: flex-start;
   display: flex;
   gap: 20px;
+
+  @media screen and (max-width: 320px) {
+    flex-direction: column;
+  }
 }
 
 section:nth-child(odd) {
@@ -168,16 +172,17 @@ li.neon-text {
 
 .wyl-list li:hover {
   background-color: #ea1d6f33; /* Highlight on hover */
+  scale: 1.1;
 }
 
 .description {
-  margin-top: 20px;
+  margin-top: 120px;
   padding: 10px;
-  background-color: #3e3e3e7a;
   border-radius: 5px;
   display: none; /* Initially hidden */
   transition: opacity 0.3s ease; /* Smooth transition */
   opacity: 0; /* Start hidden */
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .description.active {
@@ -274,7 +279,7 @@ li.neon-text {
 }
 
 .screen-body-item {
-  padding: 50px;
+  padding: 12px;
   max-width: 500px;
 }
 
@@ -313,7 +318,8 @@ li.neon-text {
 }
 
 .app-form-group.message {
-  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-top: 28px;
 }
 
 .app-form-group.buttons {
@@ -400,10 +406,6 @@ li.neon-text {
   margin-bottom: 5px;
 }
 
-.faq-answer {
-  margin-left: 20px;
-}
-
 .faq h2 {
   text-align: center;
   margin-bottom: 30px;
@@ -418,7 +420,7 @@ li.neon-text {
 }
 
 .faq-item {
-  background-color: rgba(var(--quaternary-color), 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: var(--border-radius);
   padding: var(--spacing-large);
 }
